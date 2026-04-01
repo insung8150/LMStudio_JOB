@@ -15,6 +15,15 @@ function formatTime(ts: number): string {
   });
 }
 
+function formatShortTime(ts?: number): string {
+  if (!ts) return "";
+  return new Date(ts).toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+}
+
 // Tool Call JSON에서 핵심만 추출
 function extractToolSummary(content: string): { tool: string; summary: string } {
   try {
@@ -117,10 +126,12 @@ function ToolPairBlock({
   call,
   result,
   callIdx,
+  prevTimestamp,
 }: {
   call: ApiTurn;
   result: ApiTurn;
   callIdx: number;
+  prevTimestamp?: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   const { tool, summary } = extractToolSummary(call.content);
@@ -143,6 +154,14 @@ function ToolPairBlock({
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left px-3 py-2 flex items-center gap-2 text-xs"
       >
+        {call.timestamp && (
+          <span
+            className="font-mono flex-shrink-0"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {formatShortTime(call.timestamp)}
+          </span>
+        )}
         <span
           className="font-bold px-1.5 py-0.5 rounded"
           style={{
@@ -160,6 +179,14 @@ function ToolPairBlock({
         </span>
         {isError && (
           <span style={{ color: "var(--accent-red)" }}>error</span>
+        )}
+        {call.timestamp && prevTimestamp && call.timestamp > prevTimestamp && (
+          <span
+            className="flex-shrink-0"
+            style={{ color: "var(--text-muted)" }}
+          >
+            +{((call.timestamp - prevTimestamp) / 1000).toFixed(1)}s
+          </span>
         )}
         <span style={{ color: "var(--text-muted)" }}>
           #{callIdx} {expanded ? "▼" : "▶"}
@@ -199,7 +226,7 @@ function ToolPairBlock({
   );
 }
 
-function UserBubble({ turn }: { turn: ApiTurn }) {
+function UserBubble({ turn, prevTimestamp }: { turn: ApiTurn; prevTimestamp?: number }) {
   const [showFull, setShowFull] = useState(false);
   const cleaned = cleanUserMessage(turn.content);
   const hasBoilerplate = cleaned !== turn.content;
@@ -208,6 +235,14 @@ function UserBubble({ turn }: { turn: ApiTurn }) {
   return (
     <div className="flex justify-end mb-3">
       <div className="max-w-[80%] rounded-xl px-4 py-3" style={{ background: "var(--accent-blue)" }}>
+        <div className="flex items-center gap-2 mb-1">
+          {turn.timestamp && (
+            <span className="text-xs text-white/60">{formatShortTime(turn.timestamp)}</span>
+          )}
+          {turn.timestamp && prevTimestamp && turn.timestamp > prevTimestamp && (
+            <span className="text-xs text-white/50">+{((turn.timestamp - prevTimestamp) / 1000).toFixed(1)}s</span>
+          )}
+        </div>
         {hasBoilerplate && (
           <p className="text-xs mb-1 opacity-60">
             (system-reminder 생략됨)
@@ -229,7 +264,7 @@ function UserBubble({ turn }: { turn: ApiTurn }) {
   );
 }
 
-function AssistantBubble({ turn }: { turn: ApiTurn }) {
+function AssistantBubble({ turn, prevTimestamp }: { turn: ApiTurn; prevTimestamp?: number }) {
   const [showFull, setShowFull] = useState(false);
 
   // <|channel|>...<|message|> 태그 정리
@@ -252,6 +287,11 @@ function AssistantBubble({ turn }: { turn: ApiTurn }) {
         }}
       >
         <div className="flex items-center gap-2 mb-1">
+          {turn.timestamp && (
+            <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+              {formatShortTime(turn.timestamp)}
+            </span>
+          )}
           <span
             className="text-xs font-bold"
             style={{ color: isThinking ? "var(--text-muted)" : "var(--accent-green)" }}
@@ -261,6 +301,11 @@ function AssistantBubble({ turn }: { turn: ApiTurn }) {
           {turn.model && (
             <span className="text-xs font-mono" style={{ color: "var(--text-muted)" }}>
               {turn.model}
+            </span>
+          )}
+          {turn.timestamp && prevTimestamp && turn.timestamp > prevTimestamp && (
+            <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+              +{((turn.timestamp - prevTimestamp) / 1000).toFixed(1)}s
             </span>
           )}
         </div>
@@ -361,6 +406,12 @@ export default function ApiSessionDetailPage() {
       {/* 그룹별 렌더링 */}
       <div>
         {groups.map((group, gi) => {
+          // 이전 그룹의 마지막 턴 timestamp
+          const prevGroup = gi > 0 ? groups[gi - 1] : null;
+          const prevTs = prevGroup
+            ? prevGroup.turns[prevGroup.turns.length - 1].turn.timestamp
+            : undefined;
+
           if (group.type === "meta") {
             return (
               <MetaBlock
@@ -377,14 +428,15 @@ export default function ApiSessionDetailPage() {
                 call={group.turns[0].turn}
                 result={group.turns[1].turn}
                 callIdx={group.turns[0].index}
+                prevTimestamp={prevTs}
               />
             );
           }
           if (group.type === "user") {
-            return <UserBubble key={gi} turn={group.turns[0].turn} />;
+            return <UserBubble key={gi} turn={group.turns[0].turn} prevTimestamp={prevTs} />;
           }
           if (group.type === "assistant") {
-            return <AssistantBubble key={gi} turn={group.turns[0].turn} />;
+            return <AssistantBubble key={gi} turn={group.turns[0].turn} prevTimestamp={prevTs} />;
           }
           // other
           return (

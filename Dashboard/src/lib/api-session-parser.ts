@@ -19,6 +19,7 @@ export interface ApiSession {
 export interface ApiTurn {
   role: "system" | "developer" | "user" | "assistant" | "tool_call" | "tool_result";
   content: string;
+  timestamp?: number;
   model?: string;
   stats?: {
     tokensPerSecond?: number;
@@ -135,7 +136,9 @@ function parseInputIntoTurns(input: string): ApiTurn[] {
 // ── 메인: 세션 파싱 ──
 
 export function getApiSessions(date?: string): ApiSession[] {
-  const targetDate = date || new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const localDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  const targetDate = date || localDate;
   const filepath = join(LOGS_DIR, `${targetDate}.jsonl`);
 
   if (!existsSync(filepath)) return [];
@@ -219,6 +222,33 @@ export function getApiSessions(date?: string): ApiSession[] {
     // 마지막 INPUT에서 전체 턴 파싱
     const turns = parseInputIntoTurns(lastContent);
 
+    // 각 턴에 timestamp 할당
+    // 전략: 세션의 각 INPUT/OUTPUT 쌍의 timestamp를 순서대로 턴에 매핑
+    // system/developer/user(첫 메시지) → 첫 INPUT의 timestamp
+    // 이후 tool_call/tool_result 쌍 → 순차적 INPUT/OUTPUT timestamp
+    const turnTimestamps: number[] = [];
+    for (const idx of sess.indices) {
+      turnTimestamps.push(inputs[idx].timestamp);
+      const matchOut = outputs.find((o) => o.timestamp >= inputs[idx].timestamp);
+      if (matchOut) turnTimestamps.push(matchOut.timestamp);
+    }
+
+    // 첫 몇 개 턴(system, developer, user)은 첫 timestamp
+    let tsIdx = 0;
+    let metaCount = 0;
+    for (const turn of turns) {
+      if (turn.role === "system" || turn.role === "developer") {
+        turn.timestamp = turnTimestamps[0] || inputs[firstInputIdx].timestamp;
+        metaCount++;
+      } else if (turn.role === "user" && metaCount > 0 && tsIdx === 0) {
+        turn.timestamp = turnTimestamps[0] || inputs[firstInputIdx].timestamp;
+        tsIdx = 1;
+      } else {
+        turn.timestamp = turnTimestamps[tsIdx] || turnTimestamps[turnTimestamps.length - 1];
+        tsIdx++;
+      }
+    }
+
     // 마지막 OUTPUT 추가
     const lastOutputIdx = outputs.findIndex(
       (o) => o.timestamp >= lastInput.timestamp
@@ -228,6 +258,7 @@ export function getApiSessions(date?: string): ApiSession[] {
       turns.push({
         role: "assistant",
         content: out.data.output || "",
+        timestamp: out.timestamp,
         model: out.data.modelIdentifier,
         stats: out.data.stats
           ? {

@@ -7,9 +7,15 @@ const LOGS_DIR = join(process.cwd(), "api-logs");
 let collectorProcess: ChildProcess | null = null;
 let isRunning = false;
 
+function getLocalDateString(d: Date = new Date()): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 function getLogFilePath(): string {
-  const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-  return join(LOGS_DIR, `${date}.jsonl`);
+  return join(LOGS_DIR, `${getLocalDateString()}.jsonl`);
 }
 
 export function startCollector(): void {
