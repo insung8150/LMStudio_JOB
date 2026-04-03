@@ -1,0 +1,1903 @@
+diff --git a/codex-rs/app-server-protocol/schema/json/ClientRequest.json b/codex-rs/app-server-protocol/schema/json/ClientRequest.json
+index 7c94419..dced6d3 100644
+--- a/codex-rs/app-server-protocol/schema/json/ClientRequest.json
++++ b/codex-rs/app-server-protocol/schema/json/ClientRequest.json
+@@ -1692,6 +1692,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call"
+@@ -1758,6 +1764,12 @@
+             "output": {
+               "$ref": "#/definitions/FunctionCallOutputBody"
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call_output"
+@@ -1905,6 +1917,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "web_search_call"
+diff --git a/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.schemas.json b/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.schemas.json
+index a589903..662dba4 100644
+--- a/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.schemas.json
++++ b/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.schemas.json
+@@ -10832,6 +10832,12 @@
+                   "null"
+                 ]
+               },
++              "turn_id": {
++                "type": [
++                  "string",
++                  "null"
++                ]
++              },
+               "type": {
+                 "enum": [
+                   "function_call"
+@@ -10898,6 +10904,12 @@
+               "output": {
+                 "$ref": "#/definitions/v2/FunctionCallOutputBody"
+               },
++              "turn_id": {
++                "type": [
++                  "string",
++                  "null"
++                ]
++              },
+               "type": {
+                 "enum": [
+                   "function_call_output"
+@@ -11045,6 +11057,12 @@
+                   "null"
+                 ]
+               },
++              "turn_id": {
++                "type": [
++                  "string",
++                  "null"
++                ]
++              },
+               "type": {
+                 "enum": [
+                   "web_search_call"
+diff --git a/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.v2.schemas.json b/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.v2.schemas.json
+index f041f8a..419bfe3 100644
+--- a/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.v2.schemas.json
++++ b/codex-rs/app-server-protocol/schema/json/codex_app_server_protocol.v2.schemas.json
+@@ -7655,6 +7655,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call"
+@@ -7721,6 +7727,12 @@
+             "output": {
+               "$ref": "#/definitions/FunctionCallOutputBody"
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call_output"
+@@ -7868,6 +7880,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "web_search_call"
+diff --git a/codex-rs/app-server-protocol/schema/json/v2/RawResponseItemCompletedNotification.json b/codex-rs/app-server-protocol/schema/json/v2/RawResponseItemCompletedNotification.json
+index 2b0c66d..0878792 100644
+--- a/codex-rs/app-server-protocol/schema/json/v2/RawResponseItemCompletedNotification.json
++++ b/codex-rs/app-server-protocol/schema/json/v2/RawResponseItemCompletedNotification.json
+@@ -479,6 +479,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call"
+@@ -545,6 +551,12 @@
+             "output": {
+               "$ref": "#/definitions/FunctionCallOutputBody"
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call_output"
+@@ -692,6 +704,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "web_search_call"
+diff --git a/codex-rs/app-server-protocol/schema/json/v2/ThreadResumeParams.json b/codex-rs/app-server-protocol/schema/json/v2/ThreadResumeParams.json
+index 3c8eb55..2fe5bc3 100644
+--- a/codex-rs/app-server-protocol/schema/json/v2/ThreadResumeParams.json
++++ b/codex-rs/app-server-protocol/schema/json/v2/ThreadResumeParams.json
+@@ -545,6 +545,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call"
+@@ -611,6 +617,12 @@
+             "output": {
+               "$ref": "#/definitions/FunctionCallOutputBody"
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "function_call_output"
+@@ -758,6 +770,12 @@
+                 "null"
+               ]
+             },
++            "turn_id": {
++              "type": [
++                "string",
++                "null"
++              ]
++            },
+             "type": {
+               "enum": [
+                 "web_search_call"
+diff --git a/codex-rs/app-server-protocol/schema/typescript/ResponseItem.ts b/codex-rs/app-server-protocol/schema/typescript/ResponseItem.ts
+index e9ab2a8..c0179e4 100644
+--- a/codex-rs/app-server-protocol/schema/typescript/ResponseItem.ts
++++ b/codex-rs/app-server-protocol/schema/typescript/ResponseItem.ts
+@@ -15,4 +15,4 @@ export type ResponseItem = { "type": "message", role: string, content: Array<Con
+ /**
+  * Set when using the Responses API.
+  */
+-call_id: string | null, status: LocalShellStatus, action: LocalShellAction, } | { "type": "function_call", name: string, namespace?: string, arguments: string, call_id: string, } | { "type": "tool_search_call", call_id: string | null, status?: string, execution: string, arguments: unknown, } | { "type": "function_call_output", call_id: string, output: FunctionCallOutputBody, } | { "type": "custom_tool_call", status?: string, call_id: string, name: string, input: string, } | { "type": "custom_tool_call_output", call_id: string, name?: string, output: FunctionCallOutputBody, } | { "type": "tool_search_output", call_id: string | null, status: string, execution: string, tools: unknown[], } | { "type": "web_search_call", status?: string, action?: WebSearchAction, } | { "type": "image_generation_call", id: string, status: string, revised_prompt?: string, result: string, } | { "type": "ghost_snapshot", ghost_commit: GhostCommit, } | { "type": "compaction", encrypted_content: string, } | { "type": "other" };
++call_id: string | null, status: LocalShellStatus, action: LocalShellAction, } | { "type": "function_call", turn_id?: string, name: string, namespace?: string, arguments: string, call_id: string, } | { "type": "tool_search_call", call_id: string | null, status?: string, execution: string, arguments: unknown, } | { "type": "function_call_output", turn_id?: string, call_id: string, output: FunctionCallOutputBody, } | { "type": "custom_tool_call", status?: string, call_id: string, name: string, input: string, } | { "type": "custom_tool_call_output", call_id: string, name?: string, output: FunctionCallOutputBody, } | { "type": "tool_search_output", call_id: string | null, status: string, execution: string, tools: unknown[], } | { "type": "web_search_call", turn_id?: string, status?: string, action?: WebSearchAction, } | { "type": "image_generation_call", id: string, status: string, revised_prompt?: string, result: string, } | { "type": "ghost_snapshot", ghost_commit: GhostCommit, } | { "type": "compaction", encrypted_content: string, } | { "type": "other" };
+diff --git a/codex-rs/app-server-protocol/src/protocol/thread_history.rs b/codex-rs/app-server-protocol/src/protocol/thread_history.rs
+index 48fa56d..6bbcac2 100644
+--- a/codex-rs/app-server-protocol/src/protocol/thread_history.rs
++++ b/codex-rs/app-server-protocol/src/protocol/thread_history.rs
+@@ -138,6 +138,7 @@ impl ThreadHistoryBuilder {
+             EventMsg::UserMessage(payload) => self.handle_user_message(payload),
+             EventMsg::AgentMessage(payload) => self.handle_agent_message(
+                 payload.message.clone(),
++                payload.turn_id.as_deref(),
+                 payload.phase.clone(),
+                 payload.memory_citation.clone().map(Into::into),
+             ),
+@@ -210,32 +211,62 @@ impl ThreadHistoryBuilder {
+     }
+ 
+     fn handle_response_item(&mut self, item: &codex_protocol::models::ResponseItem) {
+-        let codex_protocol::models::ResponseItem::Message {
+-            role, content, id, ..
+-        } = item
+-        else {
+-            return;
+-        };
++        match item {
++            codex_protocol::models::ResponseItem::Message {
++                role, content, id, ..
++            } => {
++                if role != "user" {
++                    return;
++                }
+ 
+-        if role != "user" {
+-            return;
++                let Some(hook_prompt) = parse_hook_prompt_message(id.as_ref(), content) else {
++                    return;
++                };
++
++                self.ensure_turn().items.push(ThreadItem::HookPrompt {
++                    id: hook_prompt.id,
++                    fragments: hook_prompt
++                        .fragments
++                        .into_iter()
++                        .map(crate::protocol::v2::HookPromptFragment::from)
++                        .collect(),
++                });
++            }
++            codex_protocol::models::ResponseItem::WebSearchCall {
++                id,
++                turn_id,
++                action,
++                ..
++            } => {
++                let item = ThreadItem::WebSearch {
++                    id: id.clone().unwrap_or_else(|| self.next_item_id()),
++                    query: action
++                        .as_ref()
++                        .map(raw_web_search_action_detail)
++                        .unwrap_or_default(),
++                    action: action.clone().map(Into::into),
++                };
++                if let Some(turn_id) = turn_id.as_deref().filter(|turn_id| !turn_id.is_empty()) {
++                    self.upsert_item_in_turn_id(turn_id, item);
++                } else {
++                    self.upsert_item_in_current_turn(item);
++                }
++            }
++            _ => {}
+         }
++    }
+ 
+-        let Some(hook_prompt) = parse_hook_prompt_message(id.as_ref(), content) else {
+-            return;
++    fn handle_user_message(&mut self, payload: &UserMessageEvent) {
++        let item = ThreadItem::UserMessage {
++            id: self.next_item_id(),
++            content: self.build_user_inputs(payload),
+         };
+ 
+-        self.ensure_turn().items.push(ThreadItem::HookPrompt {
+-            id: hook_prompt.id,
+-            fragments: hook_prompt
+-                .fragments
+-                .into_iter()
+-                .map(crate::protocol::v2::HookPromptFragment::from)
+-                .collect(),
+-        });
+-    }
++        if let Some(turn_id) = payload.turn_id.as_deref().filter(|turn_id| !turn_id.is_empty()) {
++            self.upsert_item_in_turn_id(turn_id, item);
++            return;
++        }
+ 
+-    fn handle_user_message(&mut self, payload: &UserMessageEvent) {
+         // User messages should stay in explicitly opened turns. For backward
+         // compatibility with older streams that did not open turns explicitly,
+         // close any implicit/inactive turn and start a fresh one for this input.
+@@ -249,15 +280,14 @@ impl ThreadHistoryBuilder {
+             .current_turn
+             .take()
+             .unwrap_or_else(|| self.new_turn(/*id*/ None));
+-        let id = self.next_item_id();
+-        let content = self.build_user_inputs(payload);
+-        turn.items.push(ThreadItem::UserMessage { id, content });
++        turn.items.push(item);
+         self.current_turn = Some(turn);
+     }
+ 
+     fn handle_agent_message(
+         &mut self,
+         text: String,
++        turn_id: Option<&str>,
+         phase: Option<MessagePhase>,
+         memory_citation: Option<crate::protocol::v2::MemoryCitation>,
+     ) {
+@@ -265,13 +295,18 @@ impl ThreadHistoryBuilder {
+             return;
+         }
+ 
+-        let id = self.next_item_id();
+-        self.ensure_turn().items.push(ThreadItem::AgentMessage {
+-            id,
++        let item = ThreadItem::AgentMessage {
++            id: self.next_item_id(),
+             text,
+             phase,
+             memory_citation,
+-        });
++        };
++        if let Some(turn_id) = turn_id.filter(|turn_id| !turn_id.is_empty()) {
++            self.upsert_item_in_turn_id(turn_id, item);
++            return;
++        }
++
++        self.ensure_turn().items.push(item);
+     }
+ 
+     fn handle_agent_reasoning(&mut self, payload: &AgentReasoningEvent) {
+@@ -362,7 +397,11 @@ impl ThreadHistoryBuilder {
+             query: String::new(),
+             action: None,
+         };
+-        self.upsert_item_in_current_turn(item);
++        if let Some(turn_id) = payload.turn_id.as_deref().filter(|turn_id| !turn_id.is_empty()) {
++            self.upsert_item_in_turn_id(turn_id, item);
++        } else {
++            self.upsert_item_in_current_turn(item);
++        }
+     }
+ 
+     fn handle_web_search_end(&mut self, payload: &WebSearchEndEvent) {
+@@ -371,7 +410,11 @@ impl ThreadHistoryBuilder {
+             query: payload.query.clone(),
+             action: Some(WebSearchAction::from(payload.action.clone())),
+         };
+-        self.upsert_item_in_current_turn(item);
++        if let Some(turn_id) = payload.turn_id.as_deref().filter(|turn_id| !turn_id.is_empty()) {
++            self.upsert_item_in_turn_id(turn_id, item);
++        } else {
++            self.upsert_item_in_current_turn(item);
++        }
+     }
+ 
+     fn handle_exec_command_begin(&mut self, payload: &ExecCommandBeginEvent) {
+@@ -1065,6 +1108,27 @@ impl ThreadHistoryBuilder {
+     }
+ }
+ 
++fn raw_web_search_action_detail(action: &codex_protocol::models::WebSearchAction) -> String {
++    match action {
++        codex_protocol::models::WebSearchAction::Search { query, queries } => query
++            .clone()
++            .or_else(|| queries.as_ref().and_then(|queries| queries.first().cloned()))
++            .unwrap_or_default(),
++        codex_protocol::models::WebSearchAction::OpenPage { url } => {
++            url.clone().unwrap_or_default()
++        }
++        codex_protocol::models::WebSearchAction::FindInPage { url, pattern } => {
++            match (pattern.as_deref(), url.as_deref()) {
++                (Some(pattern), Some(url)) => format!("'{pattern}' in {url}"),
++                (Some(pattern), None) => pattern.to_string(),
++                (None, Some(url)) => url.to_string(),
++                (None, None) => String::new(),
++            }
++        }
++        codex_protocol::models::WebSearchAction::Other => String::new(),
++    }
++}
++
+ const REVIEW_FALLBACK_MESSAGE: &str = "Reviewer failed to output a response.";
+ 
+ fn render_review_output_text(output: &ReviewOutputEvent) -> String {
+@@ -1227,6 +1291,7 @@ mod tests {
+     use codex_protocol::protocol::TurnCompleteEvent;
+     use codex_protocol::protocol::TurnStartedEvent;
+     use codex_protocol::protocol::UserMessageEvent;
++    use codex_protocol::protocol::WebSearchBeginEvent;
+     use codex_protocol::protocol::WebSearchEndEvent;
+     use pretty_assertions::assert_eq;
+     use std::path::PathBuf;
+@@ -1238,12 +1303,14 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "First turn".into(),
++                turn_id: None,
+                 images: Some(vec!["https://example.com/one.png".into()]),
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "Hi there".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1255,12 +1322,14 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Second turn".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "Reply two".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1347,6 +1416,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "hello".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -1388,6 +1458,7 @@ mod tests {
+     fn preserves_agent_message_phase_in_history() {
+         let events = vec![EventMsg::AgentMessage(AgentMessageEvent {
+             message: "Final reply".into(),
++            turn_id: None,
+             phase: Some(CoreMessagePhase::FinalAnswer),
+             memory_citation: None,
+         })];
+@@ -1419,6 +1490,7 @@ mod tests {
+             })),
+             RolloutItem::EventMsg(EventMsg::UserMessage(UserMessageEvent {
+                 message: "generate an image".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -1469,6 +1541,7 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Turn start".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -1481,6 +1554,7 @@ mod tests {
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "interlude".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1521,12 +1595,14 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Please do the thing".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "Working...".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1536,12 +1612,14 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Let's try again".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "Second attempt complete.".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1606,35 +1684,41 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "First".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "A1".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Second".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "A2".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+             EventMsg::ThreadRolledBack(ThreadRolledBackEvent { num_turns: 1 }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Third".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "A3".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1694,23 +1778,27 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "One".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "A1".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Two".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "A2".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -1735,12 +1823,14 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Start".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "Steer".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -1789,12 +1879,14 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "run tools".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::WebSearchEnd(WebSearchEndEvent {
+                 call_id: "search-1".into(),
++                turn_id: None,
+                 query: "codex".into(),
+                 action: CoreWebSearchAction::Search {
+                     query: Some("codex".into()),
+@@ -1894,6 +1986,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "run dynamic tool".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -1953,6 +2046,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "run tools".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2040,6 +2134,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "first".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2055,6 +2150,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "second".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2123,6 +2219,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "first".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2138,6 +2235,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "second".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2201,6 +2299,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "apply patch".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2264,6 +2363,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "apply patch".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2326,6 +2426,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "first".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2341,6 +2442,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "second".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2351,6 +2453,7 @@ mod tests {
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "still in b".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -2371,6 +2474,106 @@ mod tests {
+         assert_eq!(turns[1].items.len(), 2);
+     }
+ 
++    #[test]
++    fn turn_scoped_legacy_events_are_routed_to_completed_turns() {
++        let events = vec![
++            EventMsg::TurnStarted(TurnStartedEvent {
++                turn_id: "turn-a".into(),
++                model_context_window: None,
++                collaboration_mode_kind: Default::default(),
++            }),
++            EventMsg::UserMessage(UserMessageEvent {
++                message: "first".into(),
++                turn_id: Some("turn-a".into()),
++                images: None,
++                text_elements: Vec::new(),
++                local_images: Vec::new(),
++            }),
++            EventMsg::TurnComplete(TurnCompleteEvent {
++                turn_id: "turn-a".into(),
++                last_agent_message: None,
++            }),
++            EventMsg::TurnStarted(TurnStartedEvent {
++                turn_id: "turn-b".into(),
++                model_context_window: None,
++                collaboration_mode_kind: Default::default(),
++            }),
++            EventMsg::UserMessage(UserMessageEvent {
++                message: "second".into(),
++                turn_id: Some("turn-b".into()),
++                images: None,
++                text_elements: Vec::new(),
++                local_images: Vec::new(),
++            }),
++            EventMsg::WebSearchBegin(WebSearchBeginEvent {
++                call_id: "search-a".into(),
++                turn_id: Some("turn-a".into()),
++            }),
++            EventMsg::WebSearchEnd(WebSearchEndEvent {
++                call_id: "search-a".into(),
++                turn_id: Some("turn-a".into()),
++                query: "alpha".into(),
++                action: CoreWebSearchAction::Search {
++                    query: Some("alpha".into()),
++                    queries: None,
++                },
++            }),
++            EventMsg::AgentMessage(AgentMessageEvent {
++                message: "late for a".into(),
++                turn_id: Some("turn-a".into()),
++                phase: None,
++                memory_citation: None,
++            }),
++            EventMsg::AgentMessage(AgentMessageEvent {
++                message: "still in b".into(),
++                turn_id: Some("turn-b".into()),
++                phase: None,
++                memory_citation: None,
++            }),
++        ];
++
++        let items = events
++            .into_iter()
++            .map(RolloutItem::EventMsg)
++            .collect::<Vec<_>>();
++        let turns = build_turns_from_rollout_items(&items);
++
++        assert_eq!(turns.len(), 2);
++        assert_eq!(turns[0].id, "turn-a");
++        assert_eq!(turns[1].id, "turn-b");
++        assert_eq!(turns[0].items.len(), 3);
++        assert_eq!(turns[1].items.len(), 2);
++        assert_eq!(
++            turns[0].items[1],
++            ThreadItem::WebSearch {
++                id: "search-a".into(),
++                query: "alpha".into(),
++                action: Some(WebSearchAction::Search {
++                    query: Some("alpha".into()),
++                    queries: None,
++                }),
++            }
++        );
++        assert_eq!(
++            turns[0].items[2],
++            ThreadItem::AgentMessage {
++                id: "item-3".into(),
++                text: "late for a".into(),
++                phase: None,
++                memory_citation: None,
++            }
++        );
++        assert_eq!(
++            turns[1].items[1],
++            ThreadItem::AgentMessage {
++                id: "item-4".into(),
++                text: "still in b".into(),
++                phase: None,
++                memory_citation: None,
++            }
++        );
++    }
++
+     #[test]
+     fn late_turn_aborted_does_not_interrupt_active_turn() {
+         let events = vec![
+@@ -2381,6 +2584,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "first".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2396,6 +2600,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "second".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2406,6 +2611,7 @@ mod tests {
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "still in b".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -2458,6 +2664,7 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "resume agent".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2514,6 +2721,7 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "spawn agent".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2574,6 +2782,7 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "redirect".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2635,12 +2844,14 @@ mod tests {
+         let events = vec![
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "hello".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+             }),
+             EventMsg::AgentMessage(AgentMessageEvent {
+                 message: "done".into(),
++                turn_id: None,
+                 phase: None,
+                 memory_citation: None,
+             }),
+@@ -2670,6 +2881,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "hello".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2717,6 +2929,7 @@ mod tests {
+             }),
+             EventMsg::UserMessage(UserMessageEvent {
+                 message: "hello".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2770,6 +2983,7 @@ mod tests {
+             })),
+             RolloutItem::EventMsg(EventMsg::UserMessage(UserMessageEvent {
+                 message: "hello".into(),
++                turn_id: None,
+                 images: None,
+                 text_elements: Vec::new(),
+                 local_images: Vec::new(),
+@@ -2830,4 +3044,66 @@ mod tests {
+         assert_eq!(turns.len(), 1);
+         assert!(turns[0].items.is_empty());
+     }
++
++    #[test]
++    fn routes_raw_web_search_response_items_by_turn_id() {
++        let items = vec![
++            RolloutItem::EventMsg(EventMsg::TurnStarted(TurnStartedEvent {
++                turn_id: "turn-a".into(),
++                model_context_window: None,
++                collaboration_mode_kind: Default::default(),
++            })),
++            RolloutItem::EventMsg(EventMsg::UserMessage(UserMessageEvent {
++                message: "search alpha".into(),
++                turn_id: Some("turn-a".into()),
++                images: None,
++                text_elements: Vec::new(),
++                local_images: Vec::new(),
++            })),
++            RolloutItem::EventMsg(EventMsg::TurnComplete(TurnCompleteEvent {
++                turn_id: "turn-a".into(),
++                last_agent_message: None,
++            })),
++            RolloutItem::EventMsg(EventMsg::TurnStarted(TurnStartedEvent {
++                turn_id: "turn-b".into(),
++                model_context_window: None,
++                collaboration_mode_kind: Default::default(),
++            })),
++            RolloutItem::EventMsg(EventMsg::UserMessage(UserMessageEvent {
++                message: "search beta".into(),
++                turn_id: Some("turn-b".into()),
++                images: None,
++                text_elements: Vec::new(),
++                local_images: Vec::new(),
++            })),
++            RolloutItem::ResponseItem(codex_protocol::models::ResponseItem::WebSearchCall {
++                id: Some("ws-a".into()),
++                turn_id: Some("turn-a".into()),
++                status: Some("completed".into()),
++                action: Some(CoreWebSearchAction::Search {
++                    query: Some("alpha".into()),
++                    queries: None,
++                }),
++            }),
++        ];
++
++        let turns = build_turns_from_rollout_items(&items);
++
++        assert_eq!(turns.len(), 2);
++        assert_eq!(turns[0].id, "turn-a");
++        assert_eq!(turns[1].id, "turn-b");
++        assert_eq!(turns[0].items.len(), 2);
++        assert_eq!(turns[1].items.len(), 1);
++        assert_eq!(
++            turns[0].items[1],
++            ThreadItem::WebSearch {
++                id: "ws-a".into(),
++                query: "alpha".into(),
++                action: Some(WebSearchAction::Search {
++                    query: Some("alpha".into()),
++                    queries: None,
++                }),
++            }
++        );
++    }
+ }
+diff --git a/codex-rs/core/src/agent/control.rs b/codex-rs/core/src/agent/control.rs
+index 2b4409c..34c4160 100644
+--- a/codex-rs/core/src/agent/control.rs
++++ b/codex-rs/core/src/agent/control.rs
+@@ -319,6 +319,7 @@ impl AgentControl {
+         output.success = Some(true);
+         forked_rollout_items.push(RolloutItem::ResponseItem(
+             ResponseItem::FunctionCallOutput {
++                turn_id: None,
+                 call_id: call_id.to_string(),
+                 output,
+             },
+diff --git a/codex-rs/core/src/codex.rs b/codex-rs/core/src/codex.rs
+index 73f5c6e..9f4c6f1 100644
+--- a/codex-rs/core/src/codex.rs
++++ b/codex-rs/core/src/codex.rs
+@@ -3413,8 +3413,14 @@ impl Session {
+         items: &[ResponseItem],
+     ) {
+         self.record_into_history(items, turn_context).await;
+-        self.persist_rollout_response_items(items).await;
+-        self.send_raw_response_items(turn_context, items).await;
++        let persisted_items = items
++            .iter()
++            .cloned()
++            .map(|item| item.with_persisted_turn_id(Some(&turn_context.sub_id)))
++            .collect::<Vec<_>>();
++        self.persist_rollout_response_items(&persisted_items).await;
++        self.send_raw_response_items(turn_context, &persisted_items)
++            .await;
+     }
+ 
+     /// Append ResponseItems to the in-memory conversation history only.
+diff --git a/codex-rs/core/src/context_manager/history.rs b/codex-rs/core/src/context_manager/history.rs
+index ec2df30..e395ffc 100644
+--- a/codex-rs/core/src/context_manager/history.rs
++++ b/codex-rs/core/src/context_manager/history.rs
+@@ -363,8 +363,11 @@ impl ContextManager {
+     fn process_item(&self, item: &ResponseItem, policy: TruncationPolicy) -> ResponseItem {
+         let policy_with_serialization_budget = policy * 1.2;
+         match item {
+-            ResponseItem::FunctionCallOutput { call_id, output } => {
++            ResponseItem::FunctionCallOutput {
++                call_id, output, ..
++            } => {
+                 ResponseItem::FunctionCallOutput {
++                    turn_id: None,
+                     call_id: call_id.clone(),
+                     output: truncate_function_output_payload(
+                         output,
+diff --git a/codex-rs/core/src/context_manager/normalize.rs b/codex-rs/core/src/context_manager/normalize.rs
+index 839bae3..b54b59d 100644
+--- a/codex-rs/core/src/context_manager/normalize.rs
++++ b/codex-rs/core/src/context_manager/normalize.rs
+@@ -32,6 +32,7 @@ pub(crate) fn ensure_call_outputs_present(items: &mut Vec<ResponseItem>) {
+                     missing_outputs_to_insert.push((
+                         idx,
+                         ResponseItem::FunctionCallOutput {
++                            turn_id: None,
+                             call_id: call_id.clone(),
+                             output: FunctionCallOutputPayload::from_text("aborted".to_string()),
+                         },
+@@ -102,6 +103,7 @@ pub(crate) fn ensure_call_outputs_present(items: &mut Vec<ResponseItem>) {
+                         missing_outputs_to_insert.push((
+                             idx,
+                             ResponseItem::FunctionCallOutput {
++                                turn_id: None,
+                                 call_id: call_id.clone(),
+                                 output: FunctionCallOutputPayload::from_text("aborted".to_string()),
+                             },
+diff --git a/codex-rs/core/src/stream_events_utils.rs b/codex-rs/core/src/stream_events_utils.rs
+index 931b842..553207f 100644
+--- a/codex-rs/core/src/stream_events_utils.rs
++++ b/codex-rs/core/src/stream_events_utils.rs
+@@ -460,6 +460,7 @@ pub(crate) fn response_input_to_response_item(input: &ResponseInputItem) -> Opti
+     match input {
+         ResponseInputItem::FunctionCallOutput { call_id, output } => {
+             Some(ResponseItem::FunctionCallOutput {
++                turn_id: None,
+                 call_id: call_id.clone(),
+                 output: output.clone(),
+             })
+@@ -476,6 +477,7 @@ pub(crate) fn response_input_to_response_item(input: &ResponseInputItem) -> Opti
+         ResponseInputItem::McpToolCallOutput { call_id, output } => {
+             let output = output.as_function_call_output_payload();
+             Some(ResponseItem::FunctionCallOutput {
++                turn_id: None,
+                 call_id: call_id.clone(),
+                 output,
+             })
+diff --git a/codex-rs/exec/src/event_processor_with_jsonl_output.rs b/codex-rs/exec/src/event_processor_with_jsonl_output.rs
+index bf94531..3780aa5 100644
+--- a/codex-rs/exec/src/event_processor_with_jsonl_output.rs
++++ b/codex-rs/exec/src/event_processor_with_jsonl_output.rs
+@@ -358,6 +358,7 @@ impl EventProcessorWithJsonOutput {
+ 
+     fn reconcile_unfinished_started_items(
+         &mut self,
++        turn_id: &str,
+         turn_items: &[ThreadItem],
+     ) -> Vec<ThreadEvent> {
+         turn_items
+@@ -368,7 +369,12 @@ impl EventProcessorWithJsonOutput {
+                     return None;
+                 }
+                 self.map_completed_item_mut(item.clone())
+-                    .map(|item| ThreadEvent::ItemCompleted(ItemCompletedEvent { item }))
++                    .map(|item| {
++                        ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                            turn_id: turn_id.to_string(),
++                            item,
++                        })
++                    })
+             })
+             .collect()
+     }
+@@ -398,6 +404,7 @@ impl EventProcessorWithJsonOutput {
+     pub fn collect_warning(&mut self, message: String) -> CollectedThreadEvents {
+         CollectedThreadEvents {
+             events: vec![ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                turn_id: String::new(),
+                 item: ExecThreadItem {
+                     id: self.next_item_id(),
+                     details: ThreadItemDetails::Error(ErrorItem { message }),
+@@ -421,6 +428,7 @@ impl EventProcessorWithJsonOutput {
+                     _ => notification.summary,
+                 };
+                 events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                    turn_id: String::new(),
+                     item: ExecThreadItem {
+                         id: self.next_item_id(),
+                         details: ThreadItemDetails::Error(ErrorItem { message }),
+@@ -448,6 +456,7 @@ impl EventProcessorWithJsonOutput {
+                     _ => notification.summary,
+                 };
+                 events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                    turn_id: String::new(),
+                     item: ExecThreadItem {
+                         id: self.next_item_id(),
+                         details: ThreadItemDetails::Error(ErrorItem { message }),
+@@ -460,7 +469,10 @@ impl EventProcessorWithJsonOutput {
+             }
+             ServerNotification::ItemStarted(notification) => {
+                 if let Some(item) = self.map_started_item(notification.item) {
+-                    events.push(ThreadEvent::ItemStarted(ItemStartedEvent { item }));
++                    events.push(ThreadEvent::ItemStarted(ItemStartedEvent {
++                        turn_id: notification.turn_id,
++                        item,
++                    }));
+                 }
+                 CodexStatus::Running
+             }
+@@ -471,12 +483,16 @@ impl EventProcessorWithJsonOutput {
+                     {
+                         self.final_message = Some(text.clone());
+                     }
+-                    events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent { item }));
++                    events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                        turn_id: notification.turn_id,
++                        item,
++                    }));
+                 }
+                 CodexStatus::Running
+             }
+             ServerNotification::ModelRerouted(notification) => {
+                 events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                    turn_id: String::new(),
+                     item: ExecThreadItem {
+                         id: self.next_item_id(),
+                         details: ThreadItemDetails::Error(ErrorItem {
+@@ -494,8 +510,10 @@ impl EventProcessorWithJsonOutput {
+                 CodexStatus::Running
+             }
+             ServerNotification::TurnCompleted(notification) => {
++                let turn_id = notification.turn.id.clone();
+                 if let Some(running) = self.running_todo_list.take() {
+                     events.push(ThreadEvent::ItemCompleted(ItemCompletedEvent {
++                        turn_id: turn_id.clone(),
+                         item: ExecThreadItem {
+                             id: running.item_id,
+                             details: ThreadItemDetails::TodoList(TodoListItem {
+@@ -504,7 +522,9 @@ impl EventProcessorWithJsonOutput {
+                         },
+                     }));
+                 }
+-                events.extend(self.reconcile_unfinished_started_items(&notification.turn.items));
++                events.extend(
++                    self.reconcile_unfinished_started_items(&turn_id, &notification.turn.items),
++                );
+                 match notification.turn.status {
+                     TurnStatus::Completed => {
+                         if let Some(final_message) =
+@@ -514,6 +534,7 @@ impl EventProcessorWithJsonOutput {
+                         }
+                         self.emit_final_message_on_shutdown = true;
+                         events.push(ThreadEvent::TurnCompleted(TurnCompletedEvent {
++                            turn_id: turn_id.clone(),
+                             usage: self.usage_from_last_total(),
+                         }));
+                         CodexStatus::InitiateShutdown
+@@ -536,7 +557,10 @@ impl EventProcessorWithJsonOutput {
+                             .unwrap_or_else(|| ThreadErrorEvent {
+                                 message: "turn failed".to_string(),
+                             });
+-                        events.push(ThreadEvent::TurnFailed(TurnFailedEvent { error }));
++                        events.push(ThreadEvent::TurnFailed(TurnFailedEvent {
++                            turn_id: turn_id.clone(),
++                            error,
++                        }));
+                         CodexStatus::InitiateShutdown
+                     }
+                     TurnStatus::Interrupted => {
+@@ -554,6 +578,7 @@ impl EventProcessorWithJsonOutput {
+                     running.items = items.clone();
+                     let item_id = running.item_id.clone();
+                     events.push(ThreadEvent::ItemUpdated(ItemUpdatedEvent {
++                        turn_id: notification.turn_id,
+                         item: ExecThreadItem {
+                             id: item_id,
+                             details: ThreadItemDetails::TodoList(TodoListItem { items }),
+@@ -566,6 +591,7 @@ impl EventProcessorWithJsonOutput {
+                         items: items.clone(),
+                     });
+                     events.push(ThreadEvent::ItemStarted(ItemStartedEvent {
++                        turn_id: notification.turn_id,
+                         item: ExecThreadItem {
+                             id: item_id,
+                             details: ThreadItemDetails::TodoList(TodoListItem { items }),
+@@ -574,8 +600,10 @@ impl EventProcessorWithJsonOutput {
+                 }
+                 CodexStatus::Running
+             }
+-            ServerNotification::TurnStarted(_) => {
+-                events.push(ThreadEvent::TurnStarted(TurnStartedEvent {}));
++            ServerNotification::TurnStarted(notification) => {
++                events.push(ThreadEvent::TurnStarted(TurnStartedEvent {
++                    turn_id: notification.turn.id,
++                }));
+                 CodexStatus::Running
+             }
+             _ => CodexStatus::Running,
+diff --git a/codex-rs/exec/src/event_processor_with_jsonl_output_tests.rs b/codex-rs/exec/src/event_processor_with_jsonl_output_tests.rs
+index ffb4d1e..c560884 100644
+--- a/codex-rs/exec/src/event_processor_with_jsonl_output_tests.rs
++++ b/codex-rs/exec/src/event_processor_with_jsonl_output_tests.rs
+@@ -2,6 +2,123 @@ use super::*;
+ use pretty_assertions::assert_eq;
+ use tempfile::tempdir;
+ 
++#[test]
++fn json_output_preserves_turn_id_for_item_lifecycle_events() {
++    let mut processor = EventProcessorWithJsonOutput::new(None);
++
++    let started = processor.collect_thread_events(ServerNotification::ItemStarted(
++        codex_app_server_protocol::ItemStartedNotification {
++            item: ThreadItem::CommandExecution {
++                id: "cmd-1".to_string(),
++                command: "/bin/echo hi".to_string(),
++                cwd: "/tmp".into(),
++                process_id: None,
++                source: codex_app_server_protocol::CommandExecutionSource::Agent,
++                aggregated_output: None,
++                exit_code: None,
++                status: CommandExecutionStatus::InProgress,
++                command_actions: Vec::new(),
++                duration_ms: None,
++            },
++            thread_id: "thread-1".to_string(),
++            turn_id: "turn-1".to_string(),
++        },
++    ));
++
++    assert_eq!(
++        started.events,
++        vec![ThreadEvent::ItemStarted(ItemStartedEvent {
++            turn_id: "turn-1".to_string(),
++            item: ExecThreadItem {
++                id: "item_0".to_string(),
++                details: ThreadItemDetails::CommandExecution(CommandExecutionItem {
++                    command: "/bin/echo hi".to_string(),
++                    aggregated_output: String::new(),
++                    exit_code: None,
++                    status: ExecCommandExecutionStatus::InProgress,
++                }),
++            },
++        })]
++    );
++
++    let completed = processor.collect_thread_events(ServerNotification::ItemCompleted(
++        codex_app_server_protocol::ItemCompletedNotification {
++            item: ThreadItem::CommandExecution {
++                id: "cmd-1".to_string(),
++                command: "/bin/echo hi".to_string(),
++                cwd: "/tmp".into(),
++                process_id: None,
++                source: codex_app_server_protocol::CommandExecutionSource::Agent,
++                aggregated_output: Some("hi\n".to_string()),
++                exit_code: Some(0),
++                status: CommandExecutionStatus::Completed,
++                command_actions: Vec::new(),
++                duration_ms: None,
++            },
++            thread_id: "thread-1".to_string(),
++            turn_id: "turn-1".to_string(),
++        },
++    ));
++
++    assert_eq!(
++        completed.events,
++        vec![ThreadEvent::ItemCompleted(ItemCompletedEvent {
++            turn_id: "turn-1".to_string(),
++            item: ExecThreadItem {
++                id: "item_0".to_string(),
++                details: ThreadItemDetails::CommandExecution(CommandExecutionItem {
++                    command: "/bin/echo hi".to_string(),
++                    aggregated_output: "hi\n".to_string(),
++                    exit_code: Some(0),
++                    status: ExecCommandExecutionStatus::Completed,
++                }),
++            },
++        })]
++    );
++}
++
++#[test]
++fn json_output_preserves_turn_id_for_turn_events() {
++    let mut processor = EventProcessorWithJsonOutput::new(None);
++
++    let started = processor.collect_thread_events(ServerNotification::TurnStarted(
++        codex_app_server_protocol::TurnStartedNotification {
++            thread_id: "thread-1".to_string(),
++            turn: codex_app_server_protocol::Turn {
++                id: "turn-1".to_string(),
++                items: Vec::new(),
++                status: TurnStatus::InProgress,
++                error: None,
++            },
++        },
++    ));
++    assert_eq!(
++        started.events,
++        vec![ThreadEvent::TurnStarted(TurnStartedEvent {
++            turn_id: "turn-1".to_string(),
++        })]
++    );
++
++    let completed = processor.collect_thread_events(ServerNotification::TurnCompleted(
++        codex_app_server_protocol::TurnCompletedNotification {
++            thread_id: "thread-1".to_string(),
++            turn: codex_app_server_protocol::Turn {
++                id: "turn-1".to_string(),
++                items: Vec::new(),
++                status: TurnStatus::Completed,
++                error: None,
++            },
++        },
++    ));
++    assert_eq!(
++        completed.events,
++        vec![ThreadEvent::TurnCompleted(TurnCompletedEvent {
++            turn_id: "turn-1".to_string(),
++            usage: Usage::default(),
++        })]
++    );
++}
++
+ #[test]
+ fn failed_turn_does_not_overwrite_output_last_message_file() {
+     let tempdir = tempdir().expect("create tempdir");
+diff --git a/codex-rs/exec/src/exec_events.rs b/codex-rs/exec/src/exec_events.rs
+index d356a6a..db0396f 100644
+--- a/codex-rs/exec/src/exec_events.rs
++++ b/codex-rs/exec/src/exec_events.rs
+@@ -43,16 +43,19 @@ pub struct ThreadStartedEvent {
+ }
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS, Default)]
+-
+-pub struct TurnStartedEvent {}
++pub struct TurnStartedEvent {
++    pub turn_id: String,
++}
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS)]
+ pub struct TurnCompletedEvent {
++    pub turn_id: String,
+     pub usage: Usage,
+ }
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS)]
+ pub struct TurnFailedEvent {
++    pub turn_id: String,
+     pub error: ThreadErrorEvent,
+ }
+ 
+@@ -69,16 +72,19 @@ pub struct Usage {
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS)]
+ pub struct ItemStartedEvent {
++    pub turn_id: String,
+     pub item: ThreadItem,
+ }
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS)]
+ pub struct ItemCompletedEvent {
++    pub turn_id: String,
+     pub item: ThreadItem,
+ }
+ 
+ #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, TS)]
+ pub struct ItemUpdatedEvent {
++    pub turn_id: String,
+     pub item: ThreadItem,
+ }
+ 
+diff --git a/codex-rs/protocol/src/items.rs b/codex-rs/protocol/src/items.rs
+index 72a9551..de1ad4f 100644
+--- a/codex-rs/protocol/src/items.rs
++++ b/codex-rs/protocol/src/items.rs
+@@ -158,10 +158,15 @@ impl UserMessageItem {
+     }
+ 
+     pub fn as_legacy_event(&self) -> EventMsg {
++        self.as_legacy_event_with_turn_id(None)
++    }
++
++    pub fn as_legacy_event_with_turn_id(&self, turn_id: Option<&str>) -> EventMsg {
+         // Legacy user-message events flatten only text inputs into `message` and
+         // rebase text element ranges onto that concatenated text.
+         EventMsg::UserMessage(UserMessageEvent {
+             message: self.message(),
++            turn_id: turn_id.map(str::to_owned),
+             images: Some(self.image_urls()),
+             local_images: self.local_image_paths(),
+             text_elements: self.text_elements(),
+@@ -323,11 +328,16 @@ impl AgentMessageItem {
+     }
+ 
+     pub fn as_legacy_events(&self) -> Vec<EventMsg> {
++        self.as_legacy_events_with_turn_id(None)
++    }
++
++    pub fn as_legacy_events_with_turn_id(&self, turn_id: Option<&str>) -> Vec<EventMsg> {
+         self.content
+             .iter()
+             .map(|c| match c {
+                 AgentMessageContent::Text { text } => EventMsg::AgentMessage(AgentMessageEvent {
+                     message: text.clone(),
++                    turn_id: turn_id.map(str::to_owned),
+                     phase: self.phase.clone(),
+                     memory_citation: self.memory_citation.clone(),
+                 }),
+@@ -361,8 +371,13 @@ impl ReasoningItem {
+ 
+ impl WebSearchItem {
+     pub fn as_legacy_event(&self) -> EventMsg {
++        self.as_legacy_event_with_turn_id(None)
++    }
++
++    pub fn as_legacy_event_with_turn_id(&self, turn_id: Option<&str>) -> EventMsg {
+         EventMsg::WebSearchEnd(WebSearchEndEvent {
+             call_id: self.id.clone(),
++            turn_id: turn_id.map(str::to_owned),
+             query: self.query.clone(),
+             action: self.action.clone(),
+         })
+@@ -396,12 +411,20 @@ impl TurnItem {
+     }
+ 
+     pub fn as_legacy_events(&self, show_raw_agent_reasoning: bool) -> Vec<EventMsg> {
++        self.as_legacy_events_with_turn_id(show_raw_agent_reasoning, None)
++    }
++
++    pub fn as_legacy_events_with_turn_id(
++        &self,
++        show_raw_agent_reasoning: bool,
++        turn_id: Option<&str>,
++    ) -> Vec<EventMsg> {
+         match self {
+-            TurnItem::UserMessage(item) => vec![item.as_legacy_event()],
++            TurnItem::UserMessage(item) => vec![item.as_legacy_event_with_turn_id(turn_id)],
+             TurnItem::HookPrompt(_) => Vec::new(),
+-            TurnItem::AgentMessage(item) => item.as_legacy_events(),
++            TurnItem::AgentMessage(item) => item.as_legacy_events_with_turn_id(turn_id),
+             TurnItem::Plan(_) => Vec::new(),
+-            TurnItem::WebSearch(item) => vec![item.as_legacy_event()],
++            TurnItem::WebSearch(item) => vec![item.as_legacy_event_with_turn_id(turn_id)],
+             TurnItem::ImageGeneration(item) => vec![item.as_legacy_event()],
+             TurnItem::Reasoning(item) => item.as_legacy_events(show_raw_agent_reasoning),
+             TurnItem::ContextCompaction(item) => vec![item.as_legacy_event()],
+diff --git a/codex-rs/protocol/src/models.rs b/codex-rs/protocol/src/models.rs
+index d4e568f..6a98015 100644
+--- a/codex-rs/protocol/src/models.rs
++++ b/codex-rs/protocol/src/models.rs
+@@ -228,6 +228,9 @@ pub enum ResponseItem {
+         #[serde(default, skip_serializing)]
+         #[ts(skip)]
+         id: Option<String>,
++        #[serde(default, skip_serializing_if = "Option::is_none")]
++        #[ts(optional)]
++        turn_id: Option<String>,
+         name: String,
+         #[serde(default, skip_serializing_if = "Option::is_none")]
+         #[ts(optional)]
+@@ -256,6 +259,9 @@ pub enum ResponseItem {
+     //   - an array of structured content items (`content_items`)
+     // We keep this behavior centralized in `FunctionCallOutputPayload`.
+     FunctionCallOutput {
++        #[serde(default, skip_serializing_if = "Option::is_none")]
++        #[ts(optional)]
++        turn_id: Option<String>,
+         call_id: String,
+         #[ts(as = "FunctionCallOutputBody")]
+         #[schemars(with = "FunctionCallOutputBody")]
+@@ -306,6 +312,9 @@ pub enum ResponseItem {
+         id: Option<String>,
+         #[serde(default, skip_serializing_if = "Option::is_none")]
+         #[ts(optional)]
++        turn_id: Option<String>,
++        #[serde(default, skip_serializing_if = "Option::is_none")]
++        #[ts(optional)]
+         status: Option<String>,
+         #[serde(default, skip_serializing_if = "Option::is_none")]
+         #[ts(optional)]
+@@ -340,6 +349,41 @@ pub enum ResponseItem {
+     Other,
+ }
+ 
++impl ResponseItem {
++    pub fn with_persisted_turn_id(mut self, turn_id: Option<&str>) -> Self {
++        self.set_persisted_turn_id(turn_id);
++        self
++    }
++
++    pub fn set_persisted_turn_id(&mut self, turn_id: Option<&str>) {
++        let Some(turn_id) = turn_id.filter(|turn_id| !turn_id.is_empty()) else {
++            return;
++        };
++        let turn_id = Some(turn_id.to_string());
++        match self {
++            ResponseItem::FunctionCall {
++                turn_id: slot, ..
++            }
++            | ResponseItem::FunctionCallOutput {
++                turn_id: slot, ..
++            }
++            | ResponseItem::WebSearchCall {
++                turn_id: slot, ..
++            } => *slot = turn_id,
++            _ => {}
++        }
++    }
++
++    pub fn persisted_turn_id(&self) -> Option<&str> {
++        match self {
++            ResponseItem::FunctionCall { turn_id, .. }
++            | ResponseItem::FunctionCallOutput { turn_id, .. }
++            | ResponseItem::WebSearchCall { turn_id, .. } => turn_id.as_deref(),
++            _ => None,
++        }
++    }
++}
++
+ pub const BASE_INSTRUCTIONS_DEFAULT: &str = include_str!("prompts/base_instructions/default.md");
+ 
+ /// Base instructions for the model in a thread. Corresponds to the `instructions` field in the ResponsesAPI.
+@@ -916,11 +960,19 @@ impl From<ResponseInputItem> for ResponseItem {
+                 phase: None,
+             },
+             ResponseInputItem::FunctionCallOutput { call_id, output } => {
+-                Self::FunctionCallOutput { call_id, output }
++                Self::FunctionCallOutput {
++                    turn_id: None,
++                    call_id,
++                    output,
++                }
+             }
+             ResponseInputItem::McpToolCallOutput { call_id, output } => {
+                 let output = output.into_function_call_output_payload();
+-                Self::FunctionCallOutput { call_id, output }
++                Self::FunctionCallOutput {
++                    turn_id: None,
++                    call_id,
++                    output,
++                }
+             }
+             ResponseInputItem::CustomToolCallOutput {
+                 call_id,
+@@ -1647,6 +1699,7 @@ mod tests {
+             item,
+             ResponseItem::FunctionCall {
+                 id: None,
++                turn_id: None,
+                 name: "mcp__codex_apps__gmail_get_recent_emails".to_string(),
+                 namespace: Some("mcp__codex_apps__gmail".to_string()),
+                 arguments: "{\"top_k\":5}".to_string(),
+@@ -2324,6 +2377,7 @@ mod tests {
+                     }
+                 }"#,
+                 None,
++                None,
+                 Some(WebSearchAction::Search {
+                     query: Some("weather seattle".into()),
+                     queries: Some(vec!["weather seattle".into(), "seattle weather now".into()]),
+@@ -2341,6 +2395,7 @@ mod tests {
+                     }
+                 }"#,
+                 None,
++                None,
+                 Some(WebSearchAction::OpenPage {
+                     url: Some("https://example.com".into()),
+                 }),
+@@ -2358,6 +2413,7 @@ mod tests {
+                     }
+                 }"#,
+                 None,
++                None,
+                 Some(WebSearchAction::FindInPage {
+                     url: Some("https://example.com/docs".into()),
+                     pattern: Some("installation".into()),
+@@ -2365,6 +2421,25 @@ mod tests {
+                 Some("in_progress".into()),
+                 true,
+             ),
++            (
++                r#"{
++                    "type": "web_search_call",
++                    "turn_id": "turn-a",
++                    "status": "completed",
++                    "action": {
++                        "type": "search",
++                        "query": "turn-scoped search"
++                    }
++                }"#,
++                None,
++                Some("turn-a".into()),
++                Some(WebSearchAction::Search {
++                    query: Some("turn-scoped search".into()),
++                    queries: None,
++                }),
++                Some("completed".into()),
++                true,
++            ),
+             (
+                 r#"{
+                     "type": "web_search_call",
+@@ -2373,16 +2448,25 @@ mod tests {
+                 }"#,
+                 Some("ws_partial".into()),
+                 None,
++                None,
+                 Some("in_progress".into()),
+                 false,
+             ),
+         ];
+ 
+-        for (json_literal, expected_id, expected_action, expected_status, expect_roundtrip) in cases
++        for (
++            json_literal,
++            expected_id,
++            expected_turn_id,
++            expected_action,
++            expected_status,
++            expect_roundtrip,
++        ) in cases
+         {
+             let parsed: ResponseItem = serde_json::from_str(json_literal)?;
+             let expected = ResponseItem::WebSearchCall {
+                 id: expected_id.clone(),
++                turn_id: expected_turn_id.clone(),
+                 status: expected_status.clone(),
+                 action: expected_action.clone(),
+             };
+@@ -2399,6 +2483,52 @@ mod tests {
+         Ok(())
+     }
+ 
++    #[test]
++    fn with_persisted_turn_id_updates_turn_scoped_response_items_only() {
++        let function_call = ResponseItem::FunctionCall {
++            id: None,
++            turn_id: None,
++            name: "shell".into(),
++            namespace: None,
++            arguments: "{}".into(),
++            call_id: "call-1".into(),
++        }
++        .with_persisted_turn_id(Some("turn-a"));
++        assert_eq!(function_call.persisted_turn_id(), Some("turn-a"));
++
++        let function_output = ResponseItem::FunctionCallOutput {
++            turn_id: None,
++            call_id: "call-1".into(),
++            output: FunctionCallOutputPayload::from_text("ok".into()),
++        }
++        .with_persisted_turn_id(Some("turn-a"));
++        assert_eq!(function_output.persisted_turn_id(), Some("turn-a"));
++
++        let web_search = ResponseItem::WebSearchCall {
++            id: Some("ws-1".into()),
++            turn_id: None,
++            status: Some("completed".into()),
++            action: Some(WebSearchAction::Search {
++                query: Some("weather".into()),
++                queries: None,
++            }),
++        }
++        .with_persisted_turn_id(Some("turn-a"));
++        assert_eq!(web_search.persisted_turn_id(), Some("turn-a"));
++
++        let message = ResponseItem::Message {
++            id: None,
++            role: "assistant".into(),
++            content: vec![ContentItem::OutputText {
++                text: "hello".into(),
++            }],
++            end_turn: None,
++            phase: None,
++        }
++        .with_persisted_turn_id(Some("turn-a"));
++        assert_eq!(message.persisted_turn_id(), None);
++    }
++
+     #[test]
+     fn deserialize_shell_tool_call_params() -> Result<()> {
+         let json = r#"{
+diff --git a/codex-rs/protocol/src/protocol.rs b/codex-rs/protocol/src/protocol.rs
+index 5e0c601..50aecee 100644
+--- a/codex-rs/protocol/src/protocol.rs
++++ b/codex-rs/protocol/src/protocol.rs
+@@ -1704,6 +1704,7 @@ impl HasLegacyEvent for ItemStartedEvent {
+         match &self.item {
+             TurnItem::WebSearch(item) => vec![EventMsg::WebSearchBegin(WebSearchBeginEvent {
+                 call_id: item.id.clone(),
++                turn_id: Some(self.turn_id.clone()),
+             })],
+             TurnItem::ImageGeneration(item) => {
+                 vec![EventMsg::ImageGenerationBegin(ImageGenerationBeginEvent {
+@@ -1728,7 +1729,8 @@ pub trait HasLegacyEvent {
+ 
+ impl HasLegacyEvent for ItemCompletedEvent {
+     fn as_legacy_events(&self, show_raw_agent_reasoning: bool) -> Vec<EventMsg> {
+-        self.item.as_legacy_events(show_raw_agent_reasoning)
++        self.item
++            .as_legacy_events_with_turn_id(show_raw_agent_reasoning, Some(self.turn_id.as_str()))
+     }
+ }
+ 
+@@ -2093,6 +2095,9 @@ impl fmt::Display for FinalOutput {
+ #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema, TS)]
+ pub struct AgentMessageEvent {
+     pub message: String,
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    #[ts(optional)]
++    pub turn_id: Option<String>,
+     #[serde(default)]
+     pub phase: Option<MessagePhase>,
+     #[serde(default)]
+@@ -2102,6 +2107,9 @@ pub struct AgentMessageEvent {
+ #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema, TS)]
+ pub struct UserMessageEvent {
+     pub message: String,
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    #[ts(optional)]
++    pub turn_id: Option<String>,
+     /// Image URLs sourced from `UserInput::Image`. These are safe
+     /// to replay in legacy UI history events and correspond to images sent to
+     /// the model.
+@@ -2212,11 +2220,17 @@ impl McpToolCallEndEvent {
+ #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema, TS)]
+ pub struct WebSearchBeginEvent {
+     pub call_id: String,
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    #[ts(optional)]
++    pub turn_id: Option<String>,
+ }
+ 
+ #[derive(Debug, Clone, Deserialize, Serialize, JsonSchema, TS)]
+ pub struct WebSearchEndEvent {
+     pub call_id: String,
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    #[ts(optional)]
++    pub turn_id: Option<String>,
+     pub query: String,
+     pub action: WebSearchAction,
+ }
+@@ -3576,6 +3590,8 @@ pub struct CollabResumeEndEvent {
+ #[cfg(test)]
+ mod tests {
+     use super::*;
++    use crate::items::AgentMessageContent;
++    use crate::items::AgentMessageItem;
+     use crate::items::ImageGenerationItem;
+     use crate::items::UserMessageItem;
+     use crate::items::WebSearchItem;
+@@ -4282,7 +4298,10 @@ mod tests {
+         let legacy_events = event.as_legacy_events(/*show_raw_agent_reasoning*/ false);
+         assert_eq!(legacy_events.len(), 1);
+         match &legacy_events[0] {
+-            EventMsg::WebSearchBegin(event) => assert_eq!(event.call_id, "search-1"),
++            EventMsg::WebSearchBegin(event) => {
++                assert_eq!(event.call_id, "search-1");
++                assert_eq!(event.turn_id.as_deref(), Some("turn-1"));
++            }
+             _ => panic!("expected WebSearchBegin event"),
+         }
+     }
+@@ -4302,6 +4321,54 @@ mod tests {
+         );
+     }
+ 
++    #[test]
++    fn item_completed_event_from_user_message_emits_turn_scoped_legacy_event() {
++        let event = ItemCompletedEvent {
++            thread_id: ThreadId::new(),
++            turn_id: "turn-1".into(),
++            item: TurnItem::UserMessage(UserMessageItem::new(&[UserInput::Text {
++                text: "hello".into(),
++                text_elements: Vec::new(),
++            }])),
++        };
++
++        let legacy_events = event.as_legacy_events(/*show_raw_agent_reasoning*/ false);
++        assert_eq!(legacy_events.len(), 1);
++        match &legacy_events[0] {
++            EventMsg::UserMessage(event) => {
++                assert_eq!(event.message, "hello");
++                assert_eq!(event.turn_id.as_deref(), Some("turn-1"));
++            }
++            _ => panic!("expected UserMessage event"),
++        }
++    }
++
++    #[test]
++    fn item_completed_event_from_agent_message_emits_turn_scoped_legacy_event() {
++        let event = ItemCompletedEvent {
++            thread_id: ThreadId::new(),
++            turn_id: "turn-1".into(),
++            item: TurnItem::AgentMessage(AgentMessageItem {
++                id: "agent-1".into(),
++                content: vec![AgentMessageContent::Text {
++                    text: "hello from agent".into(),
++                }],
++                phase: None,
++                memory_citation: None,
++            }),
++        };
++
++        let legacy_events = event.as_legacy_events(/*show_raw_agent_reasoning*/ false);
++        assert_eq!(legacy_events.len(), 1);
++        match &legacy_events[0] {
++            EventMsg::AgentMessage(event) => {
++                assert_eq!(event.message, "hello from agent");
++                assert_eq!(event.turn_id.as_deref(), Some("turn-1"));
++            }
++            _ => panic!("expected AgentMessage event"),
++        }
++    }
++
+     #[test]
+     fn item_started_event_from_image_generation_emits_begin_event() {
+         let event = ItemStartedEvent {
+@@ -4517,6 +4584,7 @@ mod tests {
+     fn user_message_event_serializes_empty_metadata_vectors() -> Result<()> {
+         let event = UserMessageEvent {
+             message: "hello".to_string(),
++            turn_id: None,
+             images: None,
+             local_images: Vec::new(),
+             text_elements: Vec::new(),
+diff --git a/codex-rs/tui/src/chatwidget.rs b/codex-rs/tui/src/chatwidget.rs
+index 02429e9..2ba7dea 100644
+--- a/codex-rs/tui/src/chatwidget.rs
++++ b/codex-rs/tui/src/chatwidget.rs
+@@ -3673,6 +3673,7 @@ impl ChatWidget {
+             call_id,
+             query,
+             action,
++            ..
+         } = ev;
+         let mut handled = false;
+         if let Some(cell) = self
+@@ -5945,7 +5946,7 @@ impl ChatWidget {
+                         .collect(),
+                 };
+                 let codex_protocol::protocol::EventMsg::UserMessage(event) =
+-                    user_message.as_legacy_event()
++                    user_message.as_legacy_event_with_turn_id(Some(&turn_id))
+                 else {
+                     unreachable!("user message item should convert to a user message event");
+                 };
+@@ -5964,6 +5965,7 @@ impl ChatWidget {
+                             self.refresh_pending_input_preview();
+                             let pending_event = UserMessageEvent {
+                                 message: pending.user_message.text,
++                                turn_id: None,
+                                 images: Some(pending.user_message.remote_image_urls),
+                                 local_images: pending
+                                     .user_message
+@@ -6168,9 +6170,11 @@ impl ChatWidget {
+             ThreadItem::WebSearch { id, query, action } => {
+                 self.on_web_search_begin(WebSearchBeginEvent {
+                     call_id: id.clone(),
++                    turn_id: Some(turn_id.clone()),
+                 });
+                 self.on_web_search_end(WebSearchEndEvent {
+                     call_id: id,
++                    turn_id: Some(turn_id.clone()),
+                     query,
+                     action: action
+                         .map(web_search_action_to_core)
+@@ -6660,7 +6664,10 @@ impl ChatWidget {
+                 });
+             }
+             ThreadItem::WebSearch { id, .. } => {
+-                self.on_web_search_begin(WebSearchBeginEvent { call_id: id });
++                self.on_web_search_begin(WebSearchBeginEvent {
++                    call_id: id,
++                    turn_id: None,
++                });
+             }
+             ThreadItem::ImageGeneration { id, .. } => {
+                 self.on_image_generation_begin(ImageGenerationBeginEvent { call_id: id });
+@@ -7050,6 +7057,7 @@ impl ChatWidget {
+                             self.refresh_pending_input_preview();
+                             let pending_event = UserMessageEvent {
+                                 message: pending.user_message.text,
++                                turn_id: None,
+                                 images: Some(pending.user_message.remote_image_urls),
+                                 local_images: pending
+                                     .user_message
